@@ -16,11 +16,11 @@
 
 .card-body{
   /* border: 1px solid; */
-  box-shadow: 5px 6px 8px lack;
+  box-shadow: 5px 6px 8px black;
 }
 
 #questionsAnswered{
   color: red;
-  font-weight: bold;
+  font-weight: bol;
 }
 
