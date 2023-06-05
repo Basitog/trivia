@@ -1,0 +1,26 @@
+.trivia, .answer, .score {
+  display: none;
+}
+
+#score{
+  font-weight: bold;
+}
+
+#answer1 #answer2 #answer3 #answer4 #answer5 #answer6 #answer7 #answer8 #answer9{
+  font-weight: bold;
+}
+
+#question1 #question2 #question3 #question4 #question5 #question6 #question7 #question8 #question9{
+  font-weight: bold;
+}
+
+.card-body{
+  /* border: 1px solid; */
+  box-shadow: 5px 6px 8px black;
+}
+
+#questionsAnswered{
+  color: red;
+  font-weight: bold;
+}
+
