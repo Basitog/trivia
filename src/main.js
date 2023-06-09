@@ -3,20 +3,27 @@
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import './css/styles.css';
 
-$(document).ready(function() {
-  $("button.playButton").click(function() {
+import $ from 'jquery';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/styles.css';
+// import { attachEventListeners } from './business.js';
+
+
+$(document).ready(function () {
+  $("button.playButton").click(function () {
     $(".button").hide();
     // Make API Call
     let request = new XMLHttpRequest;
     let url = "https://opentdb.com/api.php?amount=9&category=9&type=boolean";
 
-    request.onreadystatechange = function() {
+    request.onreadystatechange = function () {
       if (this.readyState === 4 && this.status === 200) {
         const response = JSON.parse(this.responseText);
         getElements(response);
         attachEventListeners(response);
       }
-    }
+    };
 
     request.open("GET", url, true);
     request.send();
@@ -45,16 +52,17 @@ $(document).ready(function() {
     $(".trivia").show();
 
     // Establish Counter
+
     let score = 0;
     let questionsAnswered = 0;
     $(".score").show();
     $("#score").text(score);
     $("#questionsAnswered").text(questionsAnswered);
 
-    function attachEventListeners(response){
+    function attachEventListeners(response) {
       // Card 1 Event Listeners
-      $(".card-1-button-true").click(function(){
-        if (response.results[0].correct_answer === "True"){
+      $(".card-1-button-true").click(function () {
+        if (response.results[0].correct_answer === "True") {
           // Reveal the answer
           $(".card-answer-1").show();
           $(".card-1-button-true").hide();
@@ -62,7 +70,7 @@ $(document).ready(function() {
           // Add 'You are correct!'
           $(".card1").prepend("You are correct!");
           // Increment a counter by 1
-          score +=1;
+          score += 1;
           $("#score").text(score);
         } else {
           $(".card-answer-1").show();
@@ -70,11 +78,11 @@ $(document).ready(function() {
           $(".card-1-button-false").hide();
           $(".card1").prepend("You are incorrect!");
         }
-        questionsAnswered +=1;
+        questionsAnswered += 1;
         $("#questionsAnswered").text(questionsAnswered);
       });
-      $(".card-1-button-false").click(function(){
-        if (response.results[0].correct_answer === "False"){
+      $(".card-1-button-false").click(function () {
+        if (response.results[0].correct_answer === "False") {
           // Reveal the answer
           $(".card-answer-1").show();
           $(".card-1-button-true").hide();
@@ -82,7 +90,7 @@ $(document).ready(function() {
           // Add 'You are correct!'
           $(".card1").prepend("You are correct!");
           // Increment a counter by 1
-          score +=1;
+          score += 1;
           $("#score").text(score);
         } else {
           $(".card-answer-1").show();
@@ -90,12 +98,12 @@ $(document).ready(function() {
           $(".card-1-button-false").hide();
           $(".card1").prepend("You are incorrect!");
         }
-        questionsAnswered +=1;
+        questionsAnswered += 1;
         $("#questionsAnswered").text(questionsAnswered);
       });
       // Card 2 Event Listeners
-      $(".card-2-button-true").click(function(){
-        if (response.results[1].correct_answer === "True"){
+      $(".card-2-button-true").click(function () {
+        if (response.results[1].correct_answer === "True") {
           // Reveal the answer
           $(".card-answer-2").show();
           $(".card-2-button-true").hide();
@@ -103,7 +111,7 @@ $(document).ready(function() {
           // Add 'You are correct!'
           $(".card2").prepend("You are correct!");
           // Increment a counter by 1
-          score +=1;
+          score += 1;
           $("#score").text(score);
         } else {
           $(".card-answer-2").show();
@@ -111,11 +119,11 @@ $(document).ready(function() {
           $(".card-2-button-false").hide();
           $(".card2").prepend("You are incorrect!");
         }
-        questionsAnswered +=1;
+        questionsAnswered += 1;
         $("#questionsAnswered").text(questionsAnswered);
       });
-      $(".card-2-button-false").click(function(){
-        if (response.results[1].correct_answer === "False"){
+      $(".card-2-button-false").click(function () {
+        if (response.results[1].correct_answer === "False") {
           // Reveal the answer
           $(".card-answer-2").show();
           $(".card-2-button-true").hide();
@@ -123,7 +131,7 @@ $(document).ready(function() {
           // Add 'You are correct!'
           $(".card2").prepend("You are correct!");
           // Increment a counter by 1
-          score +=1;
+          score += 1;
           $("#score").text(score);
         } else {
           $(".card-answer-2").show();
@@ -131,12 +139,12 @@ $(document).ready(function() {
           $(".card-2-button-false").hide();
           $(".card2").prepend("You are incorrect!");
         }
-        questionsAnswered +=1;
+        questionsAnswered += 1;
         $("#questionsAnswered").text(questionsAnswered);
       });
       // Card 3 Event Listeners
-      $(".card-3-button-true").click(function(){
-        if (response.results[2].correct_answer === "True"){
+      $(".card-3-button-true").click(function () {
+        if (response.results[2].correct_answer === "True") {
           // Reveal the answer
           $(".card-answer-3").show();
           $(".card-3-button-true").hide();
@@ -144,7 +152,7 @@ $(document).ready(function() {
           // Add 'You are correct!'
           $(".card3").prepend("You are correct!");
           // Increment a counter by 1
-          score +=1;
+          score += 1;
           $("#score").text(score);
         } else {
           $(".card-answer-3").show();
@@ -152,11 +160,11 @@ $(document).ready(function() {
           $(".card-3-button-false").hide();
           $(".card3").prepend("You are incorrect!");
         }
-        questionsAnswered +=1;
+        questionsAnswered += 1;
         $("#questionsAnswered").text(questionsAnswered);
       });
-      $(".card-3-button-false").click(function(){
-        if (response.results[2].correct_answer === "False"){
+      $(".card-3-button-false").click(function () {
+        if (response.results[2].correct_answer === "False") {
           // Reveal the answer
           $(".card-answer-3").show();
           $(".card-3-button-true").hide();
@@ -164,7 +172,7 @@ $(document).ready(function() {
           // Add 'You are correct!'
           $(".card3").prepend("You are correct!");
           // Increment a counter by 1
-          score +=1;
+          score += 1;
           $("#score").text(score);
         } else {
           $(".card-answer-3").show();
@@ -172,12 +180,12 @@ $(document).ready(function() {
           $(".card-3-button-false").hide();
           $(".card3").prepend("You are incorrect!");
         }
-        questionsAnswered +=1;
+        questionsAnswered += 1;
         $("#questionsAnswered").text(questionsAnswered);
       });
       // Card 4 Event Listeners
-      $(".card-4-button-true").click(function(){
-        if (response.results[3].correct_answer === "True"){
+      $(".card-4-button-true").click(function () {
+        if (response.results[3].correct_answer === "True") {
           // Reveal the answer
           $(".card-answer-4").show();
           $(".card-4-button-true").hide();
@@ -185,7 +193,7 @@ $(document).ready(function() {
           // Add 'You are correct!'
           $(".card4").prepend("You are correct!");
           // Increment a counter by 1
-          score +=1;
+          score += 1;
           $("#score").text(score);
         } else {
           $(".card-answer-4").show();
@@ -193,11 +201,11 @@ $(document).ready(function() {
           $(".card-4-button-false").hide();
           $(".card4").prepend("You are incorrect!");
         }
-        questionsAnswered +=1;
+        questionsAnswered += 1;
         $("#questionsAnswered").text(questionsAnswered);
       });
-      $(".card-4-button-false").click(function(){
-        if (response.results[3].correct_answer === "False"){
+      $(".card-4-button-false").click(function () {
+        if (response.results[3].correct_answer === "False") {
           // Reveal the answer
           $(".card-answer-4").show();
           $(".card-4-button-true").hide();
@@ -205,7 +213,7 @@ $(document).ready(function() {
           // Add 'You are correct!'
           $(".card4").prepend("You are correct!");
           // Increment a counter by 1
-          score +=1;
+          score += 1;
           $("#score").text(score);
         } else {
           $(".card-answer-4").show();
@@ -213,12 +221,12 @@ $(document).ready(function() {
           $(".card-4-button-false").hide();
           $(".card4").prepend("You are incorrect!");
         }
-        questionsAnswered +=1;
+        questionsAnswered += 1;
         $("#questionsAnswered").text(questionsAnswered);
       });
       // Card 5 Event Listeners
-      $(".card-5-button-true").click(function(){
-        if (response.results[4].correct_answer === "True"){
+      $(".card-5-button-true").click(function () {
+        if (response.results[4].correct_answer === "True") {
           // Reveal the answer
           $(".card-answer-5").show();
           $(".card-5-button-true").hide();
@@ -226,7 +234,7 @@ $(document).ready(function() {
           // Add 'You are correct!'
           $(".card5").prepend("You are correct!");
           // Increment a counter by 1
-          score +=1;
+          score += 1;
           $("#score").text(score);
         } else {
           $(".card-answer-5").show();
@@ -234,11 +242,11 @@ $(document).ready(function() {
           $(".card-5-button-false").hide();
           $(".card5").prepend("You are incorrect!");
         }
-        questionsAnswered +=1;
+        questionsAnswered += 1;
         $("#questionsAnswered").text(questionsAnswered);
       });
-      $(".card-5-button-false").click(function(){
-        if (response.results[4].correct_answer === "False"){
+      $(".card-5-button-false").click(function () {
+        if (response.results[4].correct_answer === "False") {
           // Reveal the answer
           $(".card-answer-5").show();
           $(".card-5-button-true").hide();
@@ -246,7 +254,7 @@ $(document).ready(function() {
           // Add 'You are correct!'
           $(".card5").prepend("You are correct!");
           // Increment a counter by 1
-          score +=1;
+          score += 1;
           $("#score").text(score);
         } else {
           $(".card-answer-5").show();
@@ -254,12 +262,12 @@ $(document).ready(function() {
           $(".card-5-button-false").hide();
           $(".card5").prepend("You are incorrect!");
         }
-        questionsAnswered +=1;
+        questionsAnswered += 1;
         $("#questionsAnswered").text(questionsAnswered);
       });
       // Card 6 Event Listeners
-      $(".card-6-button-true").click(function(){
-        if (response.results[5].correct_answer === "True"){
+      $(".card-6-button-true").click(function () {
+        if (response.results[5].correct_answer === "True") {
           // Reveal the answer
           $(".card-answer-6").show();
           $(".card-6-button-true").hide();
@@ -267,7 +275,7 @@ $(document).ready(function() {
           // Add 'You are correct!'
           $(".card6").prepend("You are correct!");
           // Increment a counter by 1
-          score +=1;
+          score += 1;
           $("#score").text(score);
         } else {
           $(".card-answer-6").show();
@@ -275,11 +283,11 @@ $(document).ready(function() {
           $(".card-6-button-false").hide();
           $(".card6").prepend("You are incorrect!");
         }
-        questionsAnswered +=1;
+        questionsAnswered += 1;
         $("#questionsAnswered").text(questionsAnswered);
       });
-      $(".card-6-button-false").click(function(){
-        if (response.results[5].correct_answer === "False"){
+      $(".card-6-button-false").click(function () {
+        if (response.results[5].correct_answer === "False") {
           // Reveal the answer
           $(".card-answer-6").show();
           $(".card-6-button-true").hide();
@@ -287,7 +295,7 @@ $(document).ready(function() {
           // Add 'You are correct!'
           $(".card6").prepend("You are correct!");
           // Increment a counter by 1
-          score +=1;
+          score += 1;
           $("#score").text(score);
         } else {
           $(".card-answer-6").show();
@@ -295,11 +303,11 @@ $(document).ready(function() {
           $(".card-6-button-false").hide();
           $(".card6").prepend("You are incorrect!");
         }
-        questionsAnswered +=1;
+        questionsAnswered += 1;
         $("#questionsAnswered").text(questionsAnswered);
       });// Card 7 Event Listeners
-      $(".card-7-button-true").click(function(){
-        if (response.results[6].correct_answer === "True"){
+      $(".card-7-button-true").click(function () {
+        if (response.results[6].correct_answer === "True") {
           // Reveal the answer
           $(".card-answer-7").show();
           $(".card-7-button-true").hide();
@@ -307,7 +315,7 @@ $(document).ready(function() {
           // Add 'You are correct!'
           $(".card7").prepend("You are correct!");
           // Increment a counter by 1
-          score +=1;
+          score += 1;
           $("#score").text(score);
         } else {
           $(".card-answer-7").show();
@@ -315,11 +323,11 @@ $(document).ready(function() {
           $(".card-7-button-false").hide();
           $(".card7").prepend("You are incorrect!");
         }
-        questionsAnswered +=1;
+        questionsAnswered += 1;
         $("#questionsAnswered").text(questionsAnswered);
       });
-      $(".card-7-button-false").click(function(){
-        if (response.results[6].correct_answer === "False"){
+      $(".card-7-button-false").click(function () {
+        if (response.results[6].correct_answer === "False") {
           // Reveal the answer
           $(".card-answer-7").show();
           $(".card-7-button-true").hide();
@@ -327,7 +335,7 @@ $(document).ready(function() {
           // Add 'You are correct!'
           $(".card7").prepend("You are correct!");
           // Increment a counter by 1
-          score +=1;
+          score += 1;
           $("#score").text(score);
         } else {
           $(".card-answer-7").show();
@@ -335,12 +343,12 @@ $(document).ready(function() {
           $(".card-7-button-false").hide();
           $(".card7").prepend("You are incorrect!");
         }
-        questionsAnswered +=1;
+        questionsAnswered += 1;
         $("#questionsAnswered").text(questionsAnswered);
       });
       // Card 8 Event Listeners
-      $(".card-8-button-true").click(function(){
-        if (response.results[7].correct_answer === "True"){
+      $(".card-8-button-true").click(function () {
+        if (response.results[7].correct_answer === "True") {
           // Reveal the answer
           $(".card-answer-8").show();
           $(".card-8-button-true").hide();
@@ -348,7 +356,7 @@ $(document).ready(function() {
           // Add 'You are correct!'
           $(".card8").prepend("You are correct!");
           // Increment a counter by 1
-          score +=1;
+          score += 1;
           $("#score").text(score);
         } else {
           $(".card-answer-8").show();
@@ -356,11 +364,11 @@ $(document).ready(function() {
           $(".card-8-button-false").hide();
           $(".card8").prepend("You are incorrect!");
         }
-        questionsAnswered +=1;
+        questionsAnswered += 1;
         $("#questionsAnswered").text(questionsAnswered);
       });
-      $(".card-8-button-false").click(function(){
-        if (response.results[7].correct_answer === "False"){
+      $(".card-8-button-false").click(function () {
+        if (response.results[7].correct_answer === "False") {
           // Reveal the answer
           $(".card-answer-8").show();
           $(".card-8-button-true").hide();
@@ -368,7 +376,7 @@ $(document).ready(function() {
           // Add 'You are correct!'
           $(".card8").prepend("You are correct!");
           // Increment a counter by 1
-          score +=1;
+          score += 1;
           $("#score").text(score);
         } else {
           $(".card-answer-8").show();
@@ -376,12 +384,12 @@ $(document).ready(function() {
           $(".card-8-button-false").hide();
           $(".card8").prepend("You are incorrect!");
         }
-        questionsAnswered +=1;
+        questionsAnswered += 1;
         $("#questionsAnswered").text(questionsAnswered);
       });
       // Card 9 Event Listeners
-      $(".card-9-button-true").click(function(){
-        if (response.results[8].correct_answer === "True"){
+      $(".card-9-button-true").click(function () {
+        if (response.results[8].correct_answer === "True") {
           // Reveal the answer
           $(".card-answer-9").show();
           $(".card-9-button-true").hide();
@@ -389,7 +397,7 @@ $(document).ready(function() {
           // Add 'You are correct!'
           $(".card9").prepend("You are correct!");
           // Increment a counter by 1
-          score +=1;
+          score += 1;
           $("#score").text(score);
         } else {
           $(".card-answer-9").show();
@@ -397,11 +405,11 @@ $(document).ready(function() {
           $(".card-9-button-false").hide();
           $(".card9").prepend("You are incorrect!");
         }
-        questionsAnswered +=1;
+        questionsAnswered += 1;
         $("#questionsAnswered").text(questionsAnswered);
       });
-      $(".card-9-button-false").click(function(){
-        if (response.results[8].correct_answer === "False"){
+      $(".card-9-button-false").click(function () {
+        if (response.results[8].correct_answer === "False") {
           // Reveal the answer
           $(".card-answer-9").show();
           $(".card-9-button-true").hide();
@@ -409,7 +417,7 @@ $(document).ready(function() {
           // Add 'You are correct!'
           $(".card9").prepend("You are correct!");
           // Increment a counter by 1
-          score +=1;
+          score += 1;
           $("#score").text(score);
         } else {
           $(".card-answer-9").show();
@@ -417,9 +425,9 @@ $(document).ready(function() {
           $(".card-9-button-false").hide();
           $(".card9").prepend("You are incorrect!");
         }
-        questionsAnswered +=1;
+        questionsAnswered += 1;
         $("#questionsAnswered").text(questionsAnswered);
       });
-    };
+    }
   });
 });
